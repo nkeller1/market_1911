@@ -29,4 +29,21 @@ class Market
       vendor.all_items_in_stock_names
     end.uniq.sort
   end
+
+  def vendor_inventory
+    @vendors.map do |vendor|
+      vendor.inventory
+    end
+  end
+
+  def total_inventory
+    all_inventory = Hash.new(0)
+    vendor_inventory.each do |all_items|
+      all_items.map do |item, amount|
+        all_inventory[item] += amount
+      end
+    end
+
+    all_inventory
+  end
 end
