@@ -14,4 +14,10 @@
      @inventory[item] += amount
    end
 
+   def all_items_in_stock_names
+     @inventory.keys.map do |item|
+       item.name
+     end
+   end
+
  end

@@ -23,4 +23,10 @@ class Market
       end
     end
   end
+
+  def sorted_item_list
+    @vendors.flat_map do |vendor|
+      vendor.all_items_in_stock_names
+    end.uniq.sort
+  end
 end
