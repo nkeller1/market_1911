@@ -46,4 +46,15 @@ class Market
 
     all_inventory
   end
+
+  def sell(item, quantity)
+    total_inventory.any? do |x, amount|
+      if x == item && quantity > amount
+        false
+      elsif x == item && quantity <= amount
+        total_inventory[x] = (amount - quantity)
+        true
+      end
+    end
+  end
 end
